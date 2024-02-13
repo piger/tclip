@@ -7,7 +7,7 @@
 ;; Created: 2023-01-13
 ;; Version: 0.1
 ;; Keywords: tailscale, pastebin, sharing
-;; Homepage: https://github.com/tailscale-dev/tclip
+;; Homepage: https://github.com/piger/tclip
 
 ;;; Commentary:
 ;;

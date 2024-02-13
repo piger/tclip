@@ -139,7 +139,7 @@ manage it like any other systemd service.
 
 You can download the portable service image from CI by looking at the
 [recently finished
-builds](https://github.com/tailscale-dev/tclip/actions?query=is%3Asuccess+branch%3Amain),
+builds](https://github.com/piger/tclip/actions?query=is%3Asuccess+branch%3Amain),
 clicking on the most recent one, and downloading the
 `portable-service` artifact. This will get you a zipfile that contains
 a single `.raw` file. Copy this `.raw` file to `/var/lib/portable` on

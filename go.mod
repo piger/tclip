@@ -1,4 +1,4 @@
-module github.com/tailscale-dev/tclip
+module github.com/piger/tclip
 
 go 1.21
 

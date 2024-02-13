@@ -1,6 +1,6 @@
 [Unit]
 Description=The tclip service
-Documentation=https://github.com/tailscale-dev/tclip
+Documentation=https://github.com/piger/tclip
 
 [Service]
 DynamicUser=yes

@@ -70,7 +70,7 @@
             inherit (tclipd) version;
             pname = "tclip";
             description = "The tclip service";
-            homepage = "https://github.com/tailscale-dev/tclip";
+            homepage = "https://github.com/piger/tclip";
             units = [ web-service ];
             symlinks = [{
               object = "${pkgs.cacert}/etc/ssl";
