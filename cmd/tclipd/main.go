@@ -22,10 +22,12 @@ import (
 	"time"
 
 	"github.com/go-enry/go-enry/v2"
+	"github.com/gomarkdown/markdown"
+	"github.com/gomarkdown/markdown/html"
+	"github.com/gomarkdown/markdown/parser"
 	"github.com/google/uuid"
 	"github.com/microcosm-cc/bluemonday"
 	"github.com/niklasfasching/go-org/org"
-	"github.com/russross/blackfriday"
 	_ "modernc.org/sqlite"
 	"tailscale.com/client/tailscale"
 	"tailscale.com/client/tailscale/apitype"
@@ -531,7 +533,14 @@ WHERE p.id = ?1`
 	p.AllowAttrs("class").Matching(regexp.MustCompile("^language-[a-zA-Z0-9]+$")).OnElements("code")
 
 	if lang == "Markdown" {
-		output := blackfriday.MarkdownCommon([]byte(data))
+		extensions := parser.CommonExtensions | parser.AutoHeadingIDs | parser.NoEmptyLineBeforeBlock
+		parser := parser.NewWithExtensions(extensions)
+		doc := parser.Parse([]byte(data))
+
+		htmlOpts := html.RendererOptions{Flags: html.CommonFlags | html.HrefTargetBlank}
+		renderer := html.NewRenderer(htmlOpts)
+		output := markdown.Render(doc, renderer)
+
 		sanitized := p.SanitizeBytes(output)
 		raw := template.HTML(string(sanitized))
 		rawHTML = &raw
